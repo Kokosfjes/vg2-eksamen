@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitrade AS - {% block tittel %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stil.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">Digitrade AS</div>
+        <!--
+          Fleksibel meny: lenkene bygges ut fra en liste, så det er
+          lett å legge til nye sider. Noen lenker vises bare når man
+          er innlogget / er admin.
+        -->
+        <nav>
+            <a href="{{ url_for('hjem') }}">Hjem</a>
+            <a href="{{ url_for('kontakt') }}">Kontakt</a>
+            {% if session.brukernavn %}
+                <a href="{{ url_for('scripts') }}">Pythons scripts</a>
+                {% if session.rolle == 'admin' %}
+                    <a href="{{ url_for('admin') }}">Admin</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}" class="ut">Logg ut ({{ session.brukernavn }})</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Logg inn</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% with meldinger = get_flashed_messages(with_categories=true) %}
+            {% for kategori, melding in meldinger %}
+                <div class="melding {{ kategori }}">{{ melding }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        {% block innhold %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Digitrade AS &mdash; leverer elektronikk til bedriftsmarkedet</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block tittel %}Admin{% endblock %}
+{% block innhold %}
+<div class="panel">
+    <h1>Administrer brukere</h1>
+
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Brukernavn</th><th>Rolle</th><th>Handling</th></tr>
+        </thead>
+        <tbody>
+            {% for b in brukere %}
+            <tr>
+                <td>{{ b.id }}</td>
+                <td>{{ b.brukernavn }}</td>
+                <td>{{ b.rolle }}</td>
+                <td>
+                    {% if b.brukernavn != 'admin' %}
+                        <a href="{{ url_for('admin_slett_bruker', bruker_id=b.id) }}"
+                           class="slett">Slett</a>
+                    {% else %}
+                        &mdash;
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="kort">
+    <h2>Legg til ny bruker</h2>
+    <form method="POST" action="{{ url_for('admin_ny_bruker') }}">
+        <label>Brukernavn</label>
+        <input type="text" name="brukernavn" required>
+        <label>Passord</label>
+        <input type="text" name="passord" required>
+        <label>Rolle</label>
+        <select name="rolle">
+            <option value="bruker">bruker</option>
+            <option value="admin">admin</option>
+        </select>
+        <button type="submit">Legg til</button>
+    </form>
+</div>
+{% endblock %}

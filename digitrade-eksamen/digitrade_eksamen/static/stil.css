@@ -1,0 +1,156 @@
+/* ===========================================================
+   Stilark for Digitrade AS
+   Enkel CSS: farger, runde hjørner, kantlinjer og plassering.
+   =========================================================== */
+
+/* Hele siden */
+body {
+    font-family: Arial, sans-serif;   /* skrifttype */
+    background-color: #f1f5f9;         /* lys grå bakgrunn */
+    color: #0f172a;                    /* mørk tekstfarge */
+    margin: 0;
+}
+
+/* Toppfeltet med logo og meny */
+header {
+    background-color: #1e3a8a;         /* mørk blå */
+    color: white;
+    padding: 15px 30px;
+    display: flex;                     /* logo og meny på rad */
+    justify-content: space-between;    /* logo venstre, meny høyre */
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Menylenkene */
+nav a {
+    color: white;
+    text-decoration: none;             /* fjerner understrek */
+    margin-left: 18px;                 /* avstand mellom lenkene */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.ut {
+    color: #fca5a5;                    /* lys rød på "logg ut" */
+}
+
+/* Innholdsområdet midt på siden */
+main {
+    max-width: 900px;
+    margin: 30px auto;                 /* sentrerer innholdet */
+    padding: 0 20px;
+}
+
+/* Boks brukt til innhold */
+.panel {
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #e2e8f0;         /* tynn grå kant */
+    border-radius: 12px;               /* runde hjørner */
+    margin-bottom: 20px;
+}
+
+/* Hvit boks til skjema (login og "ny bruker") */
+.kort {
+    background-color: white;
+    max-width: 380px;
+    margin: 30px auto;                 /* sentrerer boksen */
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+/* Skjema: feltene under hverandre */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+/* Knapper */
+button {
+    margin-top: 20px;
+    background-color: #1d4ed8;         /* blå */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e3a8a;         /* mørkere blå */
+}
+
+/* Hjelpetekst under login */
+.hjelp {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #64748b;                    /* grå */
+}
+
+/* Meldinger (f.eks. "Feil passord") */
+.melding {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.melding.ok {
+    background-color: #dcfce7;         /* lys grønn */
+    color: #16a34a;
+}
+
+.melding.feil {
+    background-color: #fee2e2;         /* lys rød */
+    color: #dc2626;
+}
+
+/* Tabell i adminpanelet */
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;  /* linje under hver rad */
+}
+
+th {
+    background-color: #f1f5f9;         /* lys grå topprad */
+}
+
+/* "Slett"-lenke i tabellen */
+.slett {
+    color: #dc2626;                    /* rød */
+}
+
+/* Bunnfeltet */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #94a3b8;
+    font-size: 14px;
+}

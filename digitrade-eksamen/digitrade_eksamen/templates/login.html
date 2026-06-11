@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block tittel %}Logg inn{% endblock %}
+{% block innhold %}
+<div class="kort">
+    <h1>Logg inn</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        <label>Brukernavn</label>
+        <input type="text" name="brukernavn" required autofocus>
+        <label>Passord</label>
+        <input type="password" name="passord" required>
+        <button type="submit">Logg inn</button>
+    </form>
+    <p class="hjelp">Admin: admin / admin &nbsp;&middot;&nbsp; Bruker: ola / ola123</p>
+</div>
+{% endblock %}
